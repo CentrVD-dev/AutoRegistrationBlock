@@ -1,0 +1,61 @@
+{
+  "$type": "Sungero.Metadata.SolutionMetadata, Sungero.Metadata",
+  "NameGuid": "24476d51-e192-4f50-b05f-158b00173cf3",
+  "Name": "AutoRegistrationSolution",
+  "AsyncHandlers": [],
+  "ClientAssemblyName": "centrvd.AutoRegistrationSolution.Client",
+  "ClientBaseAssemblyName": "centrvd.AutoRegistrationSolution.ClientBase",
+  "ClientBaseNamespace": "centrvd.AutoRegistrationSolution.ClientBase",
+  "ClientNamespace": "centrvd.AutoRegistrationSolution.Client",
+  "Code": "AutoReg",
+  "CompanyCode": "centrvd",
+  "Cover": {
+    "NameGuid": "6eaaa96c-f27e-423c-b628-d59da659aebc",
+    "Actions": [],
+    "Background": null,
+    "Footer": {
+      "NameGuid": "5b6de26f-8384-4fb3-bc5c-4cf07cdb6c70",
+      "BackgroundPosition": "Stretch"
+    },
+    "Groups": [],
+    "Header": {
+      "NameGuid": "d5353ebb-6752-4b15-8c70-ab2181825fcf",
+      "BackgroundPosition": "Stretch"
+    },
+    "RemoteControls": [],
+    "Tabs": []
+  },
+  "DesktopViews": [],
+  "IconResourcesKeys": [],
+  "Importance": "Medium",
+  "InterfaceAssemblyName": "Sungero.Domain.Interfaces",
+  "InterfaceNamespace": "centrvd.AutoRegistrationSolution",
+  "IsolatedAssemblyName": "centrvd.AutoRegistrationSolution.Isolated",
+  "IsolatedNamespace": "centrvd.AutoRegistrationSolution.Isolated",
+  "OrderedSpecialFolders": [],
+  "PublicStructures": [],
+  "ResourceInterfaceAssemblyName": "Sungero.Domain.Interfaces",
+  "ResourceInterfaceNamespace": "centrvd.AutoRegistrationSolution",
+  "ResourcesKeys": [],
+  "ServerAssemblyName": "centrvd.AutoRegistrationSolution.Server",
+  "ServerNamespace": "centrvd.AutoRegistrationSolution.Server",
+  "SharedAssemblyName": "centrvd.AutoRegistrationSolution.Shared",
+  "SharedNamespace": "centrvd.AutoRegistrationSolution.Shared",
+  "SpecialFolders": [],
+  "Version": "0.0.1.0",
+  "Widgets": [],
+  "Versions": [
+    {
+      "Type": "SolutionMetadata",
+      "Number": 8
+    },
+    {
+      "Type": "ModuleMetadata",
+      "Number": 8
+    },
+    {
+      "Type": "DomainApi",
+      "Number": 3
+    }
+  ]
+}

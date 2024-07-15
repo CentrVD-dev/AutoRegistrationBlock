@@ -1,0 +1,122 @@
+{
+  "$type": "Sungero.Metadata.ModuleMetadata, Sungero.Metadata",
+  "NameGuid": "0d4a50a8-8b06-4f17-88b3-54e419d9a2b0",
+  "Name": "AutoRegistration",
+  "AsyncHandlers": [],
+  "ClientAssemblyName": "centrvd.AutoRegistration.Client",
+  "ClientBaseAssemblyName": "centrvd.AutoRegistration.ClientBase",
+  "ClientBaseNamespace": "centrvd.AutoRegistration.ClientBase",
+  "ClientNamespace": "centrvd.AutoRegistration.Client",
+  "Code": "AutoRe1",
+  "CompanyCode": "centrvd",
+  "Cover": {
+    "NameGuid": "5d4bf974-8647-4413-9a46-112a5052848c",
+    "Actions": [],
+    "Background": null,
+    "Footer": {
+      "NameGuid": "44eb3dff-a80e-4eff-bf7f-e9031d893e43",
+      "BackgroundPosition": "Stretch"
+    },
+    "Groups": [],
+    "Header": {
+      "NameGuid": "49f4f486-55d7-46ac-98c6-70da5338a564",
+      "BackgroundPosition": "Stretch"
+    },
+    "RemoteControls": [],
+    "Tabs": []
+  },
+  "Dependencies": [
+    {
+      "Id": "24476d51-e192-4f50-b05f-158b00173cf3",
+      "IsSolutionModule": true,
+      "MaxVersion": "",
+      "MinVersion": ""
+    }
+  ],
+  "ExplorerTreeOrder": [
+    {
+      "ItemId": "907353f1-fb34-4979-ba34-a34f542e1643"
+    },
+    {
+      "ItemId": "da1c707f-0add-45a9-8a57-5f3fffb0ea59",
+      "PreviousItemId": "907353f1-fb34-4979-ba34-a34f542e1643"
+    }
+  ],
+  "HandledEvents": [
+    "InitializingServer"
+  ],
+  "IconResourcesKeys": [],
+  "Importance": "Medium",
+  "InterfaceAssemblyName": "Sungero.Domain.Interfaces",
+  "InterfaceNamespace": "centrvd.AutoRegistration",
+  "IsolatedAssemblyName": "centrvd.AutoRegistration.Isolated",
+  "IsolatedNamespace": "centrvd.AutoRegistration.Isolated",
+  "IsVisible": false,
+  "Overridden": [
+    "IsVisible"
+  ],
+  "PublicFunctions": [
+    {
+      "Name": "GetDefaultDocRegister",
+      "Parameters": [
+        {
+          "Name": "document",
+          "ParameterType": "global::Sungero.Docflow.IOfficialDocument",
+          "ParameterTypeFullName": "Sungero.Docflow.IOfficialDocument, Sungero.Domain.Interfaces"
+        },
+        {
+          "Name": "filteredDocRegisters",
+          "ParameterType": "global::System.Collections.Generic.List<global::Sungero.Docflow.IDocumentRegister>",
+          "ParameterTypeFullName": "System.Collections.Generic.List"
+        },
+        {
+          "Name": "settingType",
+          "ParameterType": "global::System.Nullable<global::Sungero.Core.Enumeration>",
+          "ParameterTypeFullName": "System.Nullable"
+        }
+      ],
+      "Placement": "Shared",
+      "ReturnType": "global::Sungero.Docflow.IDocumentRegister",
+      "ReturnTypeFullName": "Sungero.Docflow.IDocumentRegister, Sungero.Domain.Interfaces"
+    },
+    {
+      "Name": "GetDocumentRegistersByDocument",
+      "Parameters": [
+        {
+          "Name": "document",
+          "ParameterType": "global::Sungero.Docflow.IOfficialDocument",
+          "ParameterTypeFullName": "Sungero.Docflow.IOfficialDocument, Sungero.Domain.Interfaces"
+        },
+        {
+          "Name": "settingType",
+          "ParameterType": "global::System.Nullable<global::Sungero.Core.Enumeration>",
+          "ParameterTypeFullName": "System.Nullable"
+        }
+      ],
+      "Placement": "Shared",
+      "ReturnType": "global::System.Collections.Generic.List<global::Sungero.Docflow.IDocumentRegister>",
+      "ReturnTypeFullName": "System.Collections.Generic.List"
+    }
+  ],
+  "PublicStructures": [],
+  "ResourceInterfaceAssemblyName": "Sungero.Domain.Interfaces",
+  "ResourceInterfaceNamespace": "centrvd.AutoRegistration",
+  "ResourcesKeys": [],
+  "ServerAssemblyName": "centrvd.AutoRegistration.Server",
+  "ServerNamespace": "centrvd.AutoRegistration.Server",
+  "SharedAssemblyName": "centrvd.AutoRegistration.Shared",
+  "SharedNamespace": "centrvd.AutoRegistration.Shared",
+  "SpecialFolders": [],
+  "Version": "0.0.1.0",
+  "Widgets": [],
+  "Versions": [
+    {
+      "Type": "ModuleMetadata",
+      "Number": 8
+    },
+    {
+      "Type": "DomainApi",
+      "Number": 3
+    }
+  ]
+}
