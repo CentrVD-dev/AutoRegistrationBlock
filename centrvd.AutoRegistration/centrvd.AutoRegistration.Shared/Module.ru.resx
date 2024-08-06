@@ -58,4 +58,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="NotFoundDocument" xml:space="preserve">
+    <value>Не найден документ.</value>
+  </data>
+  <data name="NotFoundSetting" xml:space="preserve">
+    <value>Не найдена настройка авторегистрации документа.</value>
+  </data>
+  <data name="NotFoundRegSetting" xml:space="preserve">
+    <value>Не найден журнал регистрации.</value>
+  </data>
+  <data name="DocumentPreviouslyRegistered" xml:space="preserve">
+    <value>Документ с ИД: {0} ранее зарегестрирован.</value>
+  </data>
 </root>

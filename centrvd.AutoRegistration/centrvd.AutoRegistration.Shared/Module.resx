@@ -58,4 +58,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="NotFoundDocument" xml:space="preserve">
+    <value>The document was not found.</value>
+  </data>
+  <data name="NotFoundSetting" xml:space="preserve">
+    <value>The document autoregistration setting was not found.</value>
+  </data>
+  <data name="NotFoundRegSetting" xml:space="preserve">
+    <value>The registration log was not found.</value>
+  </data>
+  <data name="DocumentPreviouslyRegistered" xml:space="preserve">
+    <value>The document with ID: {0} was previously registered.</value>
+  </data>
 </root>

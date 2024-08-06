@@ -71,6 +71,8 @@
       ]
     }
   ],
+  "HideFromCreationArea": true,
+  "HideFromNavigationEditorCreationArea": true,
   "IconResourcesKeys": [],
   "IntegrationServiceName": "AutoRegistrationAutoRegistrationSetting",
   "IsStatusEnabled": true,
@@ -78,7 +80,9 @@
   "OperationsClass": "",
   "Overridden": [
     "IsStatusEnabled",
-    "IsVisible"
+    "IsVisible",
+    "HideFromNavigationEditorCreationArea",
+    "HideFromCreationArea"
   ],
   "Properties": [
     {
