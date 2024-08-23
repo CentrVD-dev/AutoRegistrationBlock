@@ -70,4 +70,7 @@
   <data name="DocumentPreviouslyRegistered" xml:space="preserve">
     <value>The document with ID: {0} was previously registered.</value>
   </data>
+  <data name="DocumentLock" xml:space="preserve">
+    <value>The document was blocked by the user: {0}</value>
+  </data>
 </root>

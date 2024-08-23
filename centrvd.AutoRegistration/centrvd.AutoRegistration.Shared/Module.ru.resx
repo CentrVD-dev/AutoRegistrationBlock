@@ -68,6 +68,9 @@
     <value>Не найден журнал регистрации.</value>
   </data>
   <data name="DocumentPreviouslyRegistered" xml:space="preserve">
-    <value>Документ с ИД: {0} ранее зарегестрирован.</value>
+    <value>Документ с ИД: {0} зарегестрирован ранее .</value>
+  </data>
+  <data name="DocumentLock" xml:space="preserve">
+    <value>Документ заблокирован пользователем: {0}</value>
   </data>
 </root>

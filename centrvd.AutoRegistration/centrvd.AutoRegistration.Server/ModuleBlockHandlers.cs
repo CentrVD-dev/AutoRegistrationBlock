@@ -14,14 +14,14 @@ namespace centrvd.AutoRegistration.Server.AutoRegistrationBlocks
     {
       try
       {
-        if (!this.BlockHasDocuments())
+        if (!this.BlockHasDocument())  
         {
-          //this.ExecutionDone();
-          return;
+          this.SetBlockErrorResult("");
+          return;        
         }
         
         var document = _block.Document;
-        
+                
         var result = PublicFunctions.Module.AutoRegistrationDocument(document);
         
         if (!result.IsError)
@@ -43,7 +43,7 @@ namespace centrvd.AutoRegistration.Server.AutoRegistrationBlocks
     /// Проверить, переданы ли в блок документы.
     /// </summary>
     /// <returns>True - переданы, False - не переданы.</returns>
-    public virtual bool BlockHasDocuments()
+    public bool BlockHasDocument()
     {
       var hasDocuments = _block.Document != null;
       if (!hasDocuments)
@@ -56,7 +56,7 @@ namespace centrvd.AutoRegistration.Server.AutoRegistrationBlocks
     /// Настроить выходные параметры блока при возникновении ошибки процесса авторегистрации документа.
     /// </summary>
     /// <param name="errorMessage">Текст ошибки.</param>
-    public virtual void SetBlockErrorResult(string errorMessage)
+    public void SetBlockErrorResult(string errorMessage)
     {
       _block.OutProperties.ErrorMessage = errorMessage;
       _block.OutProperties.ExecutionResult = ExecutionResult.RegError;

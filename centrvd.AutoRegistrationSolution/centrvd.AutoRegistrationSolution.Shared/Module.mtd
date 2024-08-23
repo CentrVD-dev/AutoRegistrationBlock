@@ -7,7 +7,7 @@
   "ClientBaseAssemblyName": "centrvd.AutoRegistrationSolution.ClientBase",
   "ClientBaseNamespace": "centrvd.AutoRegistrationSolution.ClientBase",
   "ClientNamespace": "centrvd.AutoRegistrationSolution.Client",
-  "Code": "AutoReg",
+  "Code": "AutoReS",
   "CompanyCode": "centrvd",
   "Cover": {
     "NameGuid": "6eaaa96c-f27e-423c-b628-d59da659aebc",

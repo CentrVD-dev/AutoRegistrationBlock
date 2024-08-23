@@ -8,40 +8,19 @@ namespace centrvd.AutoRegistration.Shared
 {
   public class ModuleFunctions
   {
-
-    /// <summary>
-    ///  Получить отфильтрованные журналы регистрации по документу.
-    /// </summary>
-    /// <param name="document">Документ.</param>
-    /// <param name="settingType">Тип регистрации.</param>
-    /// <returns>Журналы.</returns>
-    [Public, Obsolete("Используйте метод GetDocumentRegistersIdsByDocument.")]
-    public static List<Sungero.Docflow.IDocumentRegister> GetDocumentRegistersByDocument(Sungero.Docflow.IOfficialDocument document, Enumeration? settingType)
-    {
-      var emptyList = new List<Sungero.Docflow.IDocumentRegister>();
-      var documentKind = document.DocumentKind;
-      if (documentKind == null)
-        return emptyList;
-      
-      //var isClerk = document.AccessRights.CanRegister();
-      if (settingType == Sungero.Docflow.RegistrationSetting.SettingType.Registration) //!isClerk ||
-      {
-        var setting = Sungero.Docflow.PublicFunctions.Module.Remote.GetRegistrationSettings(settingType, document.BusinessUnit, documentKind, document.Department).FirstOrDefault();
-        return setting != null ? new List<Sungero.Docflow.IDocumentRegister> { setting.DocumentRegister } : emptyList;
-      }
-      
-      return Sungero.Docflow.PublicFunctions.DocumentRegister.Remote.GetDocumentRegistersByParams(document.DocumentKind, document.BusinessUnit, document.Department, settingType, true);
-    }
     
     /// <summary>
     /// Получить журнал по умолчанию для документа.
     /// </summary>
     /// <param name="document">Документ.</param>
-    /// <param name="filteredDocRegisters">Список доступных журналов.</param>
+    /// <param name="filteredDocRegistersIds">Список ИД доступных журналов.</param>
     /// <param name="settingType">Тип настройки.</param>
-    /// <returns>Журнал.</returns>
+    /// <returns>Журнал регистрации по умолчанию.</returns>
+    /// <remarks>Журнал подбирается сначала из настройки регистрации, потом из персональных настроек пользователя.
+    /// Если в настройках не указан журнал, или указан недействующий, то вернётся первый журнал из доступных для документа.
+    /// Если доступных журналов несколько, то вернётся пустое значение.</remarks>
     [Public]
-    public new static Sungero.Docflow.IDocumentRegister GetDefaultDocRegister(Sungero.Docflow.IOfficialDocument document, List<Sungero.Docflow.IDocumentRegister> filteredDocRegisters, Enumeration? settingType)
+    public static Sungero.Docflow.IDocumentRegister GetDefaultDocRegister(Sungero.Docflow.IOfficialDocument document, List<long> filteredDocRegistersIds, Enumeration? settingType)
     {
       var defaultDocRegister = Sungero.Docflow.DocumentRegisters.Null;
 
@@ -49,7 +28,7 @@ namespace centrvd.AutoRegistration.Shared
         return defaultDocRegister;
 
       var registrationSetting = Sungero.Docflow.PublicFunctions.RegistrationSetting.GetSettingByDocument(document, settingType);
-      if (registrationSetting != null && filteredDocRegisters.Contains(registrationSetting.DocumentRegister))
+      if (registrationSetting != null && filteredDocRegistersIds.Contains(registrationSetting.DocumentRegister.Id))
         return registrationSetting.DocumentRegister;
       
       var personalSettings = Sungero.Docflow.PublicFunctions.PersonalSetting.GetPersonalSettings(null);
@@ -67,9 +46,11 @@ namespace centrvd.AutoRegistration.Shared
           defaultDocRegister = personalSettings.ContractDocRegister;
       }
 
-      if (defaultDocRegister == null || !filteredDocRegisters.Contains(defaultDocRegister) || defaultDocRegister.Status != Sungero.CoreEntities.DatabookEntry.Status.Active)
+      if (defaultDocRegister == null || !filteredDocRegistersIds.Contains(defaultDocRegister.Id) || defaultDocRegister.Status != Sungero.CoreEntities.DatabookEntry.Status.Active)
       {
-        defaultDocRegister = filteredDocRegisters.Count() > 1 ? Sungero.Docflow.DocumentRegisters.Null : Sungero.Docflow.DocumentRegisters.As(filteredDocRegisters.FirstOrDefault());
+        defaultDocRegister = null;
+        if (filteredDocRegistersIds.Count() == 1)
+          defaultDocRegister = Sungero.Docflow.PublicFunctions.DocumentRegister.Remote.GetDocumentRegister(filteredDocRegistersIds.First());
       }
       
       return defaultDocRegister;
