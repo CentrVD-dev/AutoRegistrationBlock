@@ -17,15 +17,7 @@ namespace centrvd.AutoRegistration.Server
     [Public]
     public Structures.Module.IDocumentAutoregistrationResult AutoRegistrationDocument(Sungero.Docflow.IOfficialDocument document)
     {
-      var documentLockInfo = Locks.GetLockInfo(document);
       var result = Structures.Module.DocumentAutoregistrationResult.Create();
-      
-      if (documentLockInfo.IsLocked)
-      {
-        result.IsError = true;
-        result.Message = Resources.DocumentLockFormat(documentLockInfo.OwnerName);
-        return result;
-      }
       
       if (document == null)
       {
@@ -34,17 +26,26 @@ namespace centrvd.AutoRegistration.Server
         return result;
       }
       
+      var documentLockInfo = Locks.GetLockInfo(document);
+      
+      if (documentLockInfo.IsLocked)
+      {
+        result.IsError = true;
+        result.Message = Resources.DocumentLockFormat(documentLockInfo.OwnerName);
+        return result;
+      }
+      
       Locks.Lock(document);
       
       if (document.RegistrationState != Sungero.Docflow.OfficialDocument.RegistrationState.Registered)
-      {        
+      {
         var operation = Sungero.Docflow.RegistrationSetting.SettingType.Registration;
         
         // Регистрация документа.
         var regDate = document.RegistrationDate != null ? document.RegistrationDate : Calendar.Today;
         var regNumber = document.RegistrationNumber != null ? document.RegistrationNumber : string.Empty;
         var leadDocumentId = document.LeadingDocument != null ? document.LeadingDocument.Id : 0;
-        var leadDocumentNumber = string.Empty;        
+        var leadDocumentNumber = string.Empty;
         var departmentId = document.Department != null ? document.Department.Id : 0;
         var departmentCode = document.Department != null ? document.Department.Code : string.Empty;
         var businessUnitId = document.BusinessUnit != null ? document.BusinessUnit.Id : 0;
@@ -61,7 +62,7 @@ namespace centrvd.AutoRegistration.Server
         string nextNumber = string.Empty;
         if (defaultDocumentRegister != null)
           nextNumber = Sungero.Docflow.PublicFunctions.DocumentRegister.GenerateRegistrationNumber(defaultDocumentRegister, currentRegistrationDate, index, departmentCode, businessUnitCode, caseFileIndex, docKindCode,
-                                                                                                  counterpartyCode, leadDocumentNumber);
+                                                                                                   counterpartyCode, leadDocumentNumber);
         
         var isRegistered = Sungero.Docflow.PublicFunctions.OfficialDocument.TryExternalRegister(document, nextNumber, regDate);
         if (!isRegistered)
@@ -69,9 +70,7 @@ namespace centrvd.AutoRegistration.Server
           result.IsError = true;
           result.Message = Resources.NotFoundRegSetting;
           return result;
-        }        
-        
-        Locks.Unlock(document);
+        }
         
         result.IsError = false;
       }
@@ -79,10 +78,9 @@ namespace centrvd.AutoRegistration.Server
       {
         result.IsError = false;
         result.Message = Resources.DocumentPreviouslyRegisteredFormat(document.Id);
-        
-        Locks.Unlock(document);
       }
       
+      Locks.Unlock(document);
       return result;
     }
     
