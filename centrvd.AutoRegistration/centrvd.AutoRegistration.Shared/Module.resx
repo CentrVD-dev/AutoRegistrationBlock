@@ -73,4 +73,7 @@
   <data name="DocumentLock" xml:space="preserve">
     <value>The document was blocked by the user: {0}</value>
   </data>
+  <data name="NoDocument" xml:space="preserve">
+    <value>There is no document for auto-registration</value>
+  </data>
 </root>

@@ -7,21 +7,21 @@ using Sungero.Workflow;
 
 namespace centrvd.AutoRegistration.Server.AutoRegistrationBlocks
 {
-  partial class ScriptBlockHandlers
+  partial class AutoRegistrationScriptBlockHandlers
   {
 
-    public virtual void ScriptBlockExecute()
+    public virtual void AutoRegistrationScriptBlockExecute()
     {
       try
       {
-        if (!this.BlockHasDocument())  
+        if (_block.Document == null)
         {
-          this.SetBlockErrorResult("");
-          return;        
+          this.SetBlockErrorResult(Resources.NoDocument);
+          return;
         }
         
         var document = _block.Document;
-                
+        
         var result = PublicFunctions.Module.AutoRegistrationDocument(document);
         
         if (!result.IsError)
@@ -33,24 +33,9 @@ namespace centrvd.AutoRegistration.Server.AutoRegistrationBlocks
       {
         this.SetBlockErrorResult(ex.Message);
         
-        Logger.Debug(ex.Message);
-        Logger.Debug(ex.StackTrace);
         return;
       }
-    }
-    
-    /// <summary>
-    /// Проверить, переданы ли в блок документы.
-    /// </summary>
-    /// <returns>True - переданы, False - не переданы.</returns>
-    public bool BlockHasDocument()
-    {
-      var hasDocuments = _block.Document != null;
-      if (!hasDocuments)
-        Logger.Debug("Documents are not provided");
-      
-      return hasDocuments;
-    }
+    } 
     
     /// <summary>
     /// Настроить выходные параметры блока при возникновении ошибки процесса авторегистрации документа.
@@ -60,6 +45,7 @@ namespace centrvd.AutoRegistration.Server.AutoRegistrationBlocks
     {
       _block.OutProperties.ErrorMessage = errorMessage;
       _block.OutProperties.ExecutionResult = ExecutionResult.RegError;
+      Logger.Debug(errorMessage);
     }
   }
 

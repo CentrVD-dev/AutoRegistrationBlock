@@ -7,10 +7,10 @@
     {
       "$type": "Sungero.Metadata.ScriptBlockMetadata, Sungero.Workflow.Shared",
       "NameGuid": "69258ca0-de3d-4a79-b425-565936f4ab4f",
-      "Name": "ScriptBlock",
+      "Name": "AutoRegistrationScriptBlock",
       "BaseGuid": "1f76cc5d-f096-4062-b34a-51b3c02269f2",
       "HandledEvents": [
-        "ScriptBlockExecute"
+        "AutoRegistrationScriptBlockExecute"
       ],
       "OutProperties": [
         {
@@ -74,12 +74,11 @@
       "IsSolutionModule": true,
       "MaxVersion": "",
       "MinVersion": ""
-    }
-  ],
-  "ExplorerTreeOrder": [
+    },
     {
-      "ItemId": "da1c707f-0add-45a9-8a57-5f3fffb0ea59",
-      "PreviousItemId": "907353f1-fb34-4979-ba34-a34f542e1643"
+      "Id": "ec7b606a-21ee-4f16-aba8-ab8c2af76d12",
+      "MaxVersion": "",
+      "MinVersion": "0.0.1.0"
     }
   ],
   "HandledEvents": [
@@ -107,29 +106,6 @@
       ],
       "ReturnType": "global::centrvd.AutoRegistration.Structures.Module.IDocumentAutoregistrationResult",
       "ReturnTypeFullName": "centrvd.AutoRegistration.Structures.Module.IDocumentAutoregistrationResult"
-    },
-    {
-      "Name": "GetDefaultDocRegister",
-      "Parameters": [
-        {
-          "Name": "document",
-          "ParameterType": "global::Sungero.Docflow.IOfficialDocument",
-          "ParameterTypeFullName": "Sungero.Docflow.IOfficialDocument, Sungero.Domain.Interfaces"
-        },
-        {
-          "Name": "filteredDocRegistersIds",
-          "ParameterType": "global::System.Collections.Generic.List<global::System.Int64>",
-          "ParameterTypeFullName": "System.Collections.Generic.List"
-        },
-        {
-          "Name": "settingType",
-          "ParameterType": "global::System.Nullable<global::Sungero.Core.Enumeration>",
-          "ParameterTypeFullName": "System.Nullable"
-        }
-      ],
-      "Placement": "Shared",
-      "ReturnType": "global::Sungero.Docflow.IDocumentRegister",
-      "ReturnTypeFullName": "Sungero.Docflow.IDocumentRegister, Sungero.Domain.Interfaces"
     }
   ],
   "PublicStructures": [
@@ -157,7 +133,8 @@
     "NotFoundSetting",
     "NotFoundRegSetting",
     "DocumentPreviouslyRegistered",
-    "DocumentLock"
+    "DocumentLock",
+    "NoDocument"
   ],
   "ServerAssemblyName": "centrvd.AutoRegistration.Server",
   "ServerNamespace": "centrvd.AutoRegistration.Server",

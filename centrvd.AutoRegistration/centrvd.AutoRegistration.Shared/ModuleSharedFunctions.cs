@@ -18,8 +18,8 @@ namespace centrvd.AutoRegistration.Shared
     /// <returns>Журнал регистрации по умолчанию.</returns>
     /// <remarks>Журнал подбирается сначала из настройки регистрации, потом из персональных настроек пользователя.
     /// Если в настройках не указан журнал, или указан недействующий, то вернётся первый журнал из доступных для документа.
-    /// Если доступных журналов несколько, то вернётся пустое значение.</remarks>
-    [Public]
+    /// Если доступных журналов несколько, то вернётся пустое значение.
+    /// Дублирование коробочной функции т.к. не публичная функция</remarks>
     public static Sungero.Docflow.IDocumentRegister GetDefaultDocRegister(Sungero.Docflow.IOfficialDocument document, List<long> filteredDocRegistersIds, Enumeration? settingType)
     {
       var defaultDocRegister = Sungero.Docflow.DocumentRegisters.Null;

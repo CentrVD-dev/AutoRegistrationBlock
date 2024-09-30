@@ -1,3 +1,18 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <queries>
+  <query key="GetCurrentNumber">
+    <default><![CDATA[select
+  CurrentNumber
+from
+  Sungero_DocRegister_CurrentNumbers
+where
+  DocRegisterId = {0}
+  and Month = {1}
+  and Year = {2}
+  and LeadDocument = {3}
+  and Quarter = {4}
+  and Department = {5}
+  and BUnit = {6}
+  and Day = {7}]]></default>
+  </query>
 </queries>
