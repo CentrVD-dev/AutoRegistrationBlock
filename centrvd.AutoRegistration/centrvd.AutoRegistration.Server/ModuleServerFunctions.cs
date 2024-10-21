@@ -18,6 +18,8 @@ namespace centrvd.AutoRegistration.Server
     public Structures.Module.IDocumentAutoregistrationResult AutoRegistrationDocument(Sungero.Docflow.IOfficialDocument document)
     {
       var result = Structures.Module.DocumentAutoregistrationResult.Create();
+      result.IsLocked = false;
+      result.IsError = false;
       
       if (document == null)
       {
@@ -32,10 +34,18 @@ namespace centrvd.AutoRegistration.Server
       {
         result.IsError = true;
         result.Message = Resources.DocumentLockFormat(documentLockInfo.OwnerName);
+        
         return result;
       }
       
-      Locks.Lock(document);
+      if (documentLockInfo.IsLockedByOther)
+      {
+        result.IsLocked = true;
+        result.Message = Resources.DocumentIsLockedFormat(document.Name, documentLockInfo.OwnerName);
+        return result;
+      }
+      else
+        Locks.Lock(document);
       
       if (document.RegistrationState != Sungero.Docflow.OfficialDocument.RegistrationState.Registered)
       {
@@ -71,16 +81,15 @@ namespace centrvd.AutoRegistration.Server
           result.Message = Resources.NotFoundRegSetting;
           return result;
         }
-        
-        result.IsError = false;
       }
       else
-      {
-        result.IsError = false;
+      {        
         result.Message = Resources.DocumentPreviouslyRegisteredFormat(document.Id);
       }
       
-      Locks.Unlock(document);
+      if (Locks.GetLockInfo(document).IsLockedByMe)        
+        Locks.Unlock(document);
+      
       return result;
     }
     

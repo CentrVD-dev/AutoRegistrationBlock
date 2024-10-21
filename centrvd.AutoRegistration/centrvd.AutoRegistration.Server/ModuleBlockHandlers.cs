@@ -24,6 +24,13 @@ namespace centrvd.AutoRegistration.Server.AutoRegistrationBlocks
         
         var result = PublicFunctions.Module.AutoRegistrationDocument(document);
         
+        if (result.IsLocked)
+        {
+          _block.RetrySettings.Retry = true;
+          Logger.Error(result.Message);
+          return;
+        }
+        
         if (!result.IsError)
           _block.OutProperties.ExecutionResult = ExecutionResult.Success;
         else
@@ -32,10 +39,8 @@ namespace centrvd.AutoRegistration.Server.AutoRegistrationBlocks
       catch (Exception ex)
       {
         this.SetBlockErrorResult(ex.Message);
-        
-        return;
       }
-    } 
+    }
     
     /// <summary>
     /// Настроить выходные параметры блока при возникновении ошибки процесса авторегистрации документа.

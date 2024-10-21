@@ -76,4 +76,7 @@
   <data name="NoDocument" xml:space="preserve">
     <value>There is no document for auto-registration.</value>
   </data>
+  <data name="DocumentIsLocked" xml:space="preserve">
+    <value>Document "{0}" is locked by employee: {1}.</value>
+  </data>
 </root>

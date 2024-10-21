@@ -76,4 +76,7 @@
   <data name="NoDocument" xml:space="preserve">
     <value>Отсутствует документ для авторегистрации.</value>
   </data>
+  <data name="DocumentIsLocked" xml:space="preserve">
+    <value>Документ "{0}" заблокирован пользователем: {}.</value>
+  </data>
 </root>
