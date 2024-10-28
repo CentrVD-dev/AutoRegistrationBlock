@@ -14,7 +14,7 @@ namespace centrvd.AutoRegistration.Server.AutoRegistrationBlocks
     {
       try
       {
-        var result = PublicFunctions.Module.AutoRegistrationDocument(_block.Document);
+        var result = PublicFunctions.Module.AutoRegistrationDocument(_block.Document, _block.DocumentRegister);
         if (result.IsLocked)
         {
           _block.RetrySettings.Retry = true;
@@ -26,7 +26,8 @@ namespace centrvd.AutoRegistration.Server.AutoRegistrationBlocks
         {
           _block.OutProperties.ExecutionResult = ExecutionResult.Success;
           LogAction(result.Message);
-        }        
+        }
+        
       }
       catch (Exception ex)
       {

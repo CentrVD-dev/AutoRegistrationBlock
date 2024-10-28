@@ -42,6 +42,13 @@
           "Name": "Document",
           "EntityGuid": "58cca102-1e97-4f07-b6ac-fd866a8b7cb1",
           "PreviousPropertyGuid": "5dc92a72-3a65-4872-bc04-0aa7ec353b05"
+        },
+        {
+          "$type": "Sungero.Metadata.NavigationBlockPropertyMetadata, Sungero.Metadata",
+          "NameGuid": "6dab43af-4e45-4cc4-89a7-99570a059e65",
+          "Name": "DocumentRegister",
+          "EntityGuid": "d7800dd5-a9d2-41e9-bbc4-a39292ac1eeb",
+          "PreviousPropertyGuid": "c330313c-a9b8-494d-9199-6c9672c27f95"
         }
       ]
     }
@@ -99,6 +106,11 @@
           "Name": "document",
           "ParameterType": "global::Sungero.Docflow.IOfficialDocument",
           "ParameterTypeFullName": "Sungero.Docflow.IOfficialDocument, Sungero.Domain.Interfaces"
+        },
+        {
+          "Name": "documentRegister",
+          "ParameterType": "global::Sungero.Docflow.IDocumentRegister",
+          "ParameterTypeFullName": "Sungero.Docflow.IDocumentRegister, Sungero.Domain.Interfaces"
         }
       ],
       "ReturnType": "global::centrvd.AutoRegistration.Structures.Module.IDocumentAutoregistrationResult",

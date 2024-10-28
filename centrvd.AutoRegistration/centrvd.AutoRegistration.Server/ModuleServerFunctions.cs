@@ -13,9 +13,11 @@ namespace centrvd.AutoRegistration.Server
     /// Авторегистрация документа.
     /// </summary>
     /// <param name="document">Документ.</param>
+    /// <param name="documentRegister">Журнал регистрации.</param>
     /// <returns>Результат регистрации.</returns>
     [Public]
-    public Structures.Module.IDocumentAutoregistrationResult AutoRegistrationDocument(Sungero.Docflow.IOfficialDocument document)
+    public Structures.Module.IDocumentAutoregistrationResult AutoRegistrationDocument(Sungero.Docflow.IOfficialDocument document,
+                                                                                      Sungero.Docflow.IDocumentRegister documentRegister)
     {
       var result = Structures.Module.DocumentAutoregistrationResult.Create();
       result.IsLocked = false;
@@ -43,17 +45,21 @@ namespace centrvd.AutoRegistration.Server
         if (document.RegistrationState != Sungero.Docflow.OfficialDocument.RegistrationState.Registered)
         {
           // Регистрация документа.
-          var operation = Sungero.Docflow.RegistrationSetting.SettingType.Registration;
-          var regDate = document.RegistrationDate != null ? document.RegistrationDate : Calendar.Today;
-                    
-          var registersIds = Sungero.Docflow.PublicFunctions.OfficialDocument.GetDocumentRegistersIdsByDocument(document, operation);
-          var defaultDocumentRegister = Functions.Module.GetDefaultDocRegister(document, registersIds, operation);
-          
-          string nextNumber = string.Empty;
+          var defaultDocumentRegister = Sungero.Docflow.DocumentRegisters.Null;
+          if (documentRegister == null)
+          {
+            var operation = Sungero.Docflow.RegistrationSetting.SettingType.Registration;
+            var registersIds = Sungero.Docflow.PublicFunctions.OfficialDocument.GetDocumentRegistersIdsByDocument(document, operation);
+            defaultDocumentRegister = Functions.Module.GetDefaultDocRegister(document, registersIds, operation);
+          }
+          else
+            defaultDocumentRegister = documentRegister;
           if (defaultDocumentRegister != null)
-          {            
-            defaultDocumentRegisterId = defaultDocumentRegister.Id;            
-            Sungero.Docflow.PublicFunctions.OfficialDocument.RegisterDocument(document, defaultDocumentRegister, regDate, string.Empty, false, true);                        
+          {
+            var regDate = document.RegistrationDate != null ? document.RegistrationDate : Calendar.Today;
+            defaultDocumentRegisterId = defaultDocumentRegister.Id;
+            // Не вычисляем рег. номер до сохранения, чтобы он вычислялся стандартными вычислениями коробки в событии Saving.
+            Sungero.Docflow.PublicFunctions.OfficialDocument.RegisterDocument(document, defaultDocumentRegister, regDate, string.Empty, false, true);
           }
           else
           {
@@ -77,6 +83,7 @@ namespace centrvd.AutoRegistration.Server
           Locks.Unlock(document);
       }
       return result;
-    }    
+    }
+    
   }
 }
