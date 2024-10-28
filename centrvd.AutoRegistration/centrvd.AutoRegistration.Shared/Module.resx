@@ -58,25 +58,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="NotFoundDocument" xml:space="preserve">
-    <value>The document was not found.</value>
+  <data name="DocumentPreviouslyRegistered" xml:space="preserve">
+    <value>The document with ID: {0} was previously registered.</value>
   </data>
   <data name="NotFoundSetting" xml:space="preserve">
     <value>The document autoregistration setting was not found.</value>
   </data>
   <data name="NotFoundRegSetting" xml:space="preserve">
-    <value>The registration log was not found.</value>
-  </data>
-  <data name="DocumentPreviouslyRegistered" xml:space="preserve">
-    <value>The document with ID: {0} was previously registered.</value>
-  </data>
-  <data name="DocumentLock" xml:space="preserve">
-    <value>The document was blocked by the user: {0}</value>
+    <value>No log file found for document with id {0}.</value>
   </data>
   <data name="NoDocument" xml:space="preserve">
     <value>There is no document for auto-registration.</value>
   </data>
   <data name="DocumentIsLocked" xml:space="preserve">
-    <value>Document "{0}" is locked by employee: {1}.</value>
+    <value>Document id {0} is locked by employee: {1}.</value>
+  </data>
+  <data name="FailedToRegister" xml:space="preserve">
+    <value>Failed to register document with ID {0} in DR {1}. Error: {2}</value>
   </data>
 </root>

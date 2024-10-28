@@ -130,13 +130,12 @@
   "ResourceInterfaceAssemblyName": "Sungero.Domain.Interfaces",
   "ResourceInterfaceNamespace": "centrvd.AutoRegistration",
   "ResourcesKeys": [
-    "NotFoundDocument",
+    "DocumentPreviouslyRegistered",
     "NotFoundSetting",
     "NotFoundRegSetting",
-    "DocumentPreviouslyRegistered",
-    "DocumentLock",
     "NoDocument",
-    "DocumentIsLocked"
+    "DocumentIsLocked",
+    "FailedToRegister"
   ],
   "ServerAssemblyName": "centrvd.AutoRegistration.Server",
   "ServerNamespace": "centrvd.AutoRegistration.Server",

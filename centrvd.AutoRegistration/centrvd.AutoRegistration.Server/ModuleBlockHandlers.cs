@@ -14,27 +14,19 @@ namespace centrvd.AutoRegistration.Server.AutoRegistrationBlocks
     {
       try
       {
-        if (_block.Document == null)
-        {
-          this.SetBlockErrorResult(Resources.NoDocument);
-          return;
-        }
-        
-        var document = _block.Document;
-        
-        var result = PublicFunctions.Module.AutoRegistrationDocument(document);
-        
+        var result = PublicFunctions.Module.AutoRegistrationDocument(_block.Document);
         if (result.IsLocked)
         {
           _block.RetrySettings.Retry = true;
-          Logger.Error(result.Message);
-          return;
+          LogAction(result.Message);
         }
-        
-        if (!result.IsError)
-          _block.OutProperties.ExecutionResult = ExecutionResult.Success;
-        else
+        else if (result.IsError)
           this.SetBlockErrorResult(result.Message);
+        else
+        {
+          _block.OutProperties.ExecutionResult = ExecutionResult.Success;
+          LogAction(result.Message);
+        }        
       }
       catch (Exception ex)
       {
@@ -50,7 +42,23 @@ namespace centrvd.AutoRegistration.Server.AutoRegistrationBlocks
     {
       _block.OutProperties.ErrorMessage = errorMessage;
       _block.OutProperties.ExecutionResult = ExecutionResult.RegError;
-      Logger.Debug(errorMessage);
+      LogAction(errorMessage);
+    }
+    
+    /// <summary>
+    /// Логирование сообщения.
+    /// </summary>
+    /// <param name="message">Сообщение.</param>
+    public void LogAction(string message)
+    {
+      if (string.IsNullOrWhiteSpace(message))
+        return;
+      var parts = new List<string>();
+      parts.Add("AutoRegistrationScriptBlock");
+      parts.Add(message);
+      parts.Add($"Task (id={_obj.MainTaskId}).");      
+      parts.Add($"RetryIteration: {_block.RetrySettings.RetryIteration}");
+      Logger.Debug(string.Join(" ", parts));
     }
   }
 
