@@ -54,6 +54,7 @@ namespace centrvd.AutoRegistration.Server
           }
           else
             defaultDocumentRegister = documentRegister;
+          
           if (defaultDocumentRegister != null)
           {
             var regDate = document.RegistrationDate != null ? document.RegistrationDate : Calendar.Today;
