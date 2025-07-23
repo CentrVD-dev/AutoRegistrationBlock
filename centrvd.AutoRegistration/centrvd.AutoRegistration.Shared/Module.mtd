@@ -35,6 +35,7 @@
           "Name": "ErrorMessage"
         }
       ],
+      "ProcessStagesDisplayMode": "Hide",
       "Properties": [
         {
           "$type": "Sungero.Metadata.NavigationBlockPropertyMetadata, Sungero.Metadata",
@@ -159,7 +160,7 @@
   "Versions": [
     {
       "Type": "ModuleMetadata",
-      "Number": 8
+      "Number": 9
     },
     {
       "Type": "DomainApi",
