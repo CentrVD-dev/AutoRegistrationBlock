@@ -6,7 +6,7 @@ using Sungero.CoreEntities;
 
 namespace centrvd.AutoRegistrationSolution.Client
 {
-  public class ModuleFunctions
+  public partial class ModuleFunctions
   {
 
   }

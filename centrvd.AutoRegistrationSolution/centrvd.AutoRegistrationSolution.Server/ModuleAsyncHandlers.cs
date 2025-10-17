@@ -6,7 +6,7 @@ using Sungero.CoreEntities;
 
 namespace centrvd.AutoRegistrationSolution.Server
 {
-  public class ModuleAsyncHandlers
+  public partial class ModuleAsyncHandlers
   {
 
   }

@@ -8,7 +8,6 @@
       "$type": "Sungero.Metadata.ScriptBlockMetadata, Sungero.Workflow.Shared",
       "NameGuid": "69258ca0-de3d-4a79-b425-565936f4ab4f",
       "Name": "AutoRegistrationScriptBlock",
-      "BaseGuid": "1f76cc5d-f096-4062-b34a-51b3c02269f2",
       "HandledEvents": [
         "AutoRegistrationScriptBlockExecute"
       ],
@@ -89,7 +88,6 @@
       "MinVersion": "0.0.1.0"
     }
   ],
-  "IconResourcesKeys": [],
   "Importance": "Medium",
   "InterfaceAssemblyName": "Sungero.Domain.Interfaces",
   "InterfaceNamespace": "centrvd.AutoRegistration",
@@ -160,7 +158,7 @@
   "Versions": [
     {
       "Type": "ModuleMetadata",
-      "Number": 9
+      "Number": 11
     },
     {
       "Type": "DomainApi",
